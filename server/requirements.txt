@@ -1,0 +1,14 @@
+flask
+flask-cors 
+flask-sqlalchemy
+flask-jwt-extended
+flask-socketio
+flask-bcrypt
+flask-migrate
+psycopg2-binary 
+python-dotenv 
+redis 
+eventlet
+openai
+apscheduler
+razorpay

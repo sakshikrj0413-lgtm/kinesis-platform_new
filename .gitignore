@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+.env
+server/.env
+client/.env
+node_modules/
+dist/
+client/dist/
+instance/
+.git
+*.log
