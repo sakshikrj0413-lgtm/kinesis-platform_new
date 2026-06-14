@@ -67,7 +67,7 @@ export default function ChatWindow() {
         }
       `}</style>
       <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-        <div ref={containerRef} className="msg-scroll" style={{ flex: 1, overflowY: "auto", padding: "16px 24px 8px" }}>
+        <div ref={containerRef} className="msg-scroll" style={{ flex: 1, overflowY: "auto", overflowX: "hidden", minWidth: 0, padding: "16px 24px 8px" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 12, minHeight: "100%" }}>
             {messages.length === 0 && (
               <motion.div

@@ -31,6 +31,8 @@ export default function ChatMessage({ message }) {
           fontSize: 14,
           lineHeight: 1.7,
           whiteSpace: "pre-wrap",
+          wordBreak: "break-word",
+          overflowWrap: "break-word",
           background: isUser
             ? "linear-gradient(135deg, rgba(0,255,136,0.12), rgba(0,255,136,0.06))"
             : "rgba(17,24,17,0.5)",
