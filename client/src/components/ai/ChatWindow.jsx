@@ -161,7 +161,7 @@ export default function ChatWindow() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            style={{ padding: "12px 24px", borderTop: "1px solid rgba(17,24,17,0.5)", background: "rgba(5,8,5,0.3)" }}
+            style={{ padding: "12px 24px", borderTop: "1px solid rgba(17,24,17,0.5)", background: "rgba(5,8,5,0.3)", maxHeight: "30vh", overflowY: "auto", flexShrink: 0 }}
           >
             <p style={{ fontSize: 11, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8, fontWeight: 700 }}>
               Suggested Bets
