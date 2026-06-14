@@ -10,11 +10,12 @@ class AICompiler:
 
     def _get_client(self):
         if self._openai_client is None:
-            api_key = os.environ.get("OPENAI_API_KEY")
+            api_key = os.environ.get("GROQ_API_KEY") or os.environ.get("OPENAI_API_KEY")
             if api_key:
                 try:
                     from openai import OpenAI
-                    self._openai_client = OpenAI(api_key=api_key)
+                    base_url = "https://api.groq.com/openai/v1" if os.environ.get("GROQ_API_KEY") else None
+                    self._openai_client = OpenAI(api_key=api_key, base_url=base_url)
                 except Exception:
                     self._openai_client = None
         return self._openai_client
@@ -39,6 +40,8 @@ class AICompiler:
         client = self._get_client()
         if client:
             try:
+                model = "llama-3.3-70b-versatile" if os.environ.get("GROQ_API_KEY") else "gpt-4o-mini"
+
                 response = client.chat.completions.create(
                     model="gpt-4o-mini",
                     messages=[{"role": "user", "content": formatted}],

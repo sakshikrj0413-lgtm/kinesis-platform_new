@@ -18,11 +18,12 @@ client = None
 def get_openai_client():
     global client
     if client is None:
-        api_key = os.environ.get("OPENAI_API_KEY")
+        api_key = os.environ.get("GROQ_API_KEY") or os.environ.get("OPENAI_API_KEY")
         if not api_key:
-            logger.warning("OPENAI_API_KEY not set, AI features will use mock responses")
+            logger.warning("GROQ_API_KEY not set, AI features will use mock responses")
             return None
-        client = OpenAI(api_key=api_key)
+        base_url = "https://api.groq.com/openai/v1" if os.environ.get("GROQ_API_KEY") else None
+        client = OpenAI(api_key=api_key, base_url=base_url)
     return client
 
 
@@ -40,8 +41,10 @@ def generate_ai_response(messages, max_tokens=1024, temperature=0.7):
         system_message = {"role": "system", "content": SYSTEM_PROMPT}
         full_messages = [system_message] + messages
 
+        model = "llama-3.3-70b-versatile" if os.environ.get("GROQ_API_KEY") else "gpt-4o-mini"
+
         response = openai.chat.completions.create(
-            model="gpt-4o-mini",
+            model=model,
             messages=full_messages,
             max_tokens=max_tokens,
             temperature=temperature,
