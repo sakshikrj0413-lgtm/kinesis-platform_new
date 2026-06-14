@@ -4,7 +4,9 @@ __pycache__/
 *.pyc
 .env
 server/.env
+server/.env.example
 client/.env
+client/.env.example
 node_modules/
 dist/
 client/dist/
