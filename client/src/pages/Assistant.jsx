@@ -8,7 +8,7 @@ export default function Assistant() {
   const { analysis, clearAnalysis } = useAIStore();
 
   return (
-    <div style={{ display: 'flex', height: 'calc(100vh - 108px)', position: 'relative', overflow: 'hidden' }}>
+    <div className="assistant-root" style={{ display: 'flex', height: '100dvh', position: 'relative', overflow: 'hidden' }}>
       {/* Animated grid background */}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
         <div className="assistant-grid-bg" />
@@ -16,7 +16,7 @@ export default function Assistant() {
       </div>
 
       {/* Header bar */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, padding: '16px 24px', display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div className="assistant-header" style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, padding: '16px 24px', display: 'flex', alignItems: 'center', gap: 12 }}>
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -57,7 +57,9 @@ export default function Assistant() {
         </div>
       </div>
 
-      <RecentChats />
+      <div className="assistant-recent-chats">
+        <RecentChats />
+      </div>
 
       <style>{`
         .assistant-grid-bg {
@@ -72,6 +74,15 @@ export default function Assistant() {
           width: 600px; height: 400px;
           background: radial-gradient(ellipse, rgba(0,255,136,0.08) 0%, transparent 70%);
           pointer-events: none;
+        }
+        .assistant-recent-chats { flex-shrink: 0; }
+        @media (max-width: 900px) {
+          .assistant-recent-chats { display: none; }
+        }
+        @media (max-width: 640px) {
+          .assistant-root .assistant-header { padding: 12px 16px !important; }
+          .assistant-root .assistant-header span:first-of-type { font-size: 14px !important; }
+          .assistant-root .assistant-header span:last-of-type { display: none; }
         }
       `}</style>
     </div>
