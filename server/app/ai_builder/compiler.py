@@ -41,9 +41,8 @@ class AICompiler:
         if client:
             try:
                 model = "llama-3.3-70b-versatile" if os.environ.get("GROQ_API_KEY") else "gpt-4o-mini"
-
                 response = client.chat.completions.create(
-                    model="gpt-4o-mini",
+                    model=model,
                     messages=[{"role": "user", "content": formatted}],
                     temperature=0.3,
                     max_tokens=500,

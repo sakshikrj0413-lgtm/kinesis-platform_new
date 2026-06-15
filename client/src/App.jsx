@@ -22,6 +22,7 @@ import Arbitrage from "./pages/Arbitrage";
 import AIBuilder from "./pages/AIBuilder";
 import Marketplace from "./pages/Marketplace";
 import About from "./pages/About";
+import Profile from "./pages/Profile";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import useAuthStore from "./store/authStore";
@@ -143,6 +144,12 @@ function App() {
             <AdminGuard>
               <Marketplace />
             </AdminGuard>
+          </ProtectedRoute>
+        } />
+
+        <Route path="/profile" element={
+          <ProtectedRoute>
+            <Profile />
           </ProtectedRoute>
         } />
 

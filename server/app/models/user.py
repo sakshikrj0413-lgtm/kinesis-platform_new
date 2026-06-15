@@ -18,4 +18,10 @@ class User(db.Model):
 
     chain_id = db.Column(db.Integer, nullable=True)
 
+    avatar_url = db.Column(db.Text, nullable=True)
+
+    phone = db.Column(db.String(20), nullable=True)
+
+    bio = db.Column(db.String(300), nullable=True)
+
     created_at = db.Column(db.DateTime, default=datetime.utcnow)

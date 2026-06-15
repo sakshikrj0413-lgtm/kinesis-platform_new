@@ -5,12 +5,20 @@ import API from "../api/axios";
 import socket from "../socket";
 
 export default function DashboardLayout({ children, fullWidth = false }) {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(window.innerWidth <= 1024);
   const [globalStats, setGlobalStats] = useState({
     tradersOnline: 0,
     totalVolume: 0,
     activeMarkets: 0,
   });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSidebarCollapsed(window.innerWidth <= 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const fetchStats = async () => {
     try {
