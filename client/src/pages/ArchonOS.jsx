@@ -492,7 +492,7 @@ export default function ArchonOS() {
         </div>
 
         {/* LAYER 1 & 2: CONDUIT INGESTION & CVN COLLATERAL PASSPORT */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(480px, 1fr))", gap: "24px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "24px" }}>
           
           {/* CONDUIT INGESTION */}
           <div style={{
@@ -750,7 +750,7 @@ export default function ArchonOS() {
         </div>
 
         {/* LAYER 3 & 4: IVE ORDERBOOK & GOG NETTING */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(480px, 1fr))", gap: "24px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "24px" }}>
           
           {/* IVE ORDERBOOK */}
           <div style={{
@@ -766,13 +766,13 @@ export default function ArchonOS() {
               </p>
             </div>
 
-            <form onSubmit={handlePlaceOrder} style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: "8px", alignItems: "flex-end" }}>
+            <form onSubmit={handlePlaceOrder} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: "8px", alignItems: "flex-end" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
                 <span style={{ fontSize: "0.65rem", color: "var(--muted)", fontWeight: 700 }}>DIRECTION</span>
                 <select
                   value={orderType}
                   onChange={(e) => setOrderType(e.target.value)}
-                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)" }}
+                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)", width: "100%", boxSizing: "border-box" }}
                 >
                   <option value="bid">Borrow (Bid)</option>
                   <option value="ask">Lend (Ask)</option>
@@ -785,7 +785,7 @@ export default function ArchonOS() {
                   type="number"
                   value={orderAmount}
                   onChange={(e) => setOrderAmount(parseFloat(e.target.value))}
-                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)" }}
+                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)", width: "100%", boxSizing: "border-box" }}
                 />
               </div>
 
@@ -796,7 +796,7 @@ export default function ArchonOS() {
                   step="0.01"
                   value={orderRate}
                   onChange={(e) => setOrderRate(parseFloat(e.target.value))}
-                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)" }}
+                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)", width: "100%", boxSizing: "border-box" }}
                 />
               </div>
 
@@ -805,7 +805,7 @@ export default function ArchonOS() {
                 <select
                   value={orderDuration}
                   onChange={(e) => setOrderDuration(parseInt(e.target.value))}
-                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)" }}
+                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)", width: "100%", boxSizing: "border-box" }}
                 >
                   <option value={15}>15 Mins</option>
                   <option value={120}>2 Hours</option>
@@ -817,8 +817,8 @@ export default function ArchonOS() {
               <button
                 type="submit"
                 style={{
-                  gridColumn: "span 4", padding: "8px", borderRadius: "8px", background: "var(--green)",
-                  border: "none", color: "var(--black)", fontWeight: 900, cursor: "pointer"
+                  gridColumn: "1 / -1", padding: "8px", borderRadius: "8px", background: "var(--green)",
+                  border: "none", color: "var(--black)", fontWeight: 900, cursor: "pointer", width: "100%"
                 }}
               >
                 SUBMIT INTRADAY VELOCITY INTENT
@@ -926,7 +926,7 @@ export default function ArchonOS() {
             </div>
 
             {/* Create mock obligation */}
-            <form onSubmit={handleCreateObligation} style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: "8px", alignItems: "flex-end" }}>
+            <form onSubmit={handleCreateObligation} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: "8px", alignItems: "flex-end" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
                 <span style={{ fontSize: "0.65rem", color: "var(--muted)", fontWeight: 700 }}>DEBTOR</span>
                 <input
@@ -934,7 +934,7 @@ export default function ArchonOS() {
                   placeholder="e.g. admin"
                   value={obDebtor}
                   onChange={(e) => setObDebtor(e.target.value)}
-                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)" }}
+                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)", width: "100%", boxSizing: "border-box" }}
                 />
               </div>
 
@@ -945,7 +945,7 @@ export default function ArchonOS() {
                   placeholder="e.g. user"
                   value={obCreditor}
                   onChange={(e) => setObCreditor(e.target.value)}
-                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)" }}
+                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)", width: "100%", boxSizing: "border-box" }}
                 />
               </div>
 
@@ -955,7 +955,7 @@ export default function ArchonOS() {
                   type="number"
                   value={obAmount}
                   onChange={(e) => setObAmount(parseFloat(e.target.value))}
-                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)" }}
+                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)", width: "100%", boxSizing: "border-box" }}
                 />
               </div>
 
@@ -964,7 +964,7 @@ export default function ArchonOS() {
                 <select
                   value={obDelay}
                   onChange={(e) => setObDelay(parseInt(e.target.value))}
-                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)" }}
+                  style={{ background: "var(--surface3)", border: "1px solid var(--green-border)", padding: "6px", borderRadius: "6px", color: "var(--text)", width: "100%", boxSizing: "border-box" }}
                 >
                   <option value={0}>Immediate</option>
                   <option value={2}>2 Hours</option>
@@ -976,8 +976,8 @@ export default function ArchonOS() {
               <button
                 type="submit"
                 style={{
-                  gridColumn: "span 4", padding: "8px", borderRadius: "8px", background: "var(--surface3)",
-                  border: "1px solid var(--green-border)", color: "var(--green)", fontWeight: 700, cursor: "pointer"
+                  gridColumn: "1 / -1", padding: "8px", borderRadius: "8px", background: "var(--surface3)",
+                  border: "1px solid var(--green-border)", color: "var(--green)", fontWeight: 700, cursor: "pointer", width: "100%"
                 }}
               >
                 RECORD MOCK OBLIGATION ON GOG
