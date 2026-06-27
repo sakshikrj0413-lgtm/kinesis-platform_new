@@ -39,6 +39,8 @@ services:
         generateValue: true
       - key: OPENAI_API_KEY
         sync: false
+      - key: GROQ_API_KEY
+        sync: false
       - key: ODDS_API_KEY
         sync: false
       - key: RAZORPAY_KEY_ID
