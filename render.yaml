@@ -37,6 +37,8 @@ services:
         generateValue: true
       - key: JWT_SECRET_KEY
         generateValue: true
+      - key: CORS_ALLOWED_ORIGINS
+        value: "*"
       - key: OPENAI_API_KEY
         sync: false
       - key: GROQ_API_KEY
@@ -56,9 +58,10 @@ services:
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     envVars:
-      - key: VITE_API_URL
-        value: https://kinesis-server.onrender.com/api
       - key: VITE_SOCKET_URL
-        value: https://kinesis-server.onrender.com
+        fromService:
+          name: kinesis-server
+          type: web
+          property: host
       - key: VITE_WALLETCONNECT_PROJECT_ID
         sync: false

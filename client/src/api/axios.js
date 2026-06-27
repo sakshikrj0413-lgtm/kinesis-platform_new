@@ -1,7 +1,10 @@
 import axios from "axios";
 
+const socketUrl = import.meta.env.VITE_SOCKET_URL;
+const baseURL = import.meta.env.VITE_API_URL || (socketUrl ? `${socketUrl}/api` : "http://127.0.0.1:5000/api");
+
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://127.0.0.1:5000/api",
+  baseURL,
 });
 
 API.interceptors.request.use((config) => {

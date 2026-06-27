@@ -11,10 +11,20 @@ def create_app():
 
     app.config.from_object(Config)
 
-    CORS(app, resources={r"/api/*": {"origins": [
+    import os
+    cors_origins = [
         "https://kinesis-platform-1.onrender.com",
         "http://localhost:5173",
-    ]}}, supports_credentials=True)
+        "https://kinesis-client.onrender.com"
+    ]
+    env_origins = os.getenv("CORS_ALLOWED_ORIGINS")
+    if env_origins:
+        if env_origins == "*":
+            cors_origins = "*"
+        else:
+            cors_origins.extend([o.strip() for o in env_origins.split(",")])
+
+    CORS(app, resources={r"/api/*": {"origins": cors_origins}}, supports_credentials=True)
 
     db.init_app(app)
     jwt.init_app(app)
