@@ -23,6 +23,7 @@ import AIBuilder from "./pages/AIBuilder";
 import Marketplace from "./pages/Marketplace";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
+import ArchonOS from "./pages/ArchonOS";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import useAuthStore from "./store/authStore";
@@ -150,6 +151,14 @@ function App() {
         <Route path="/profile" element={
           <ProtectedRoute>
             <Profile />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/archon" element={
+          <ProtectedRoute>
+            <AdminGuard>
+              <ArchonOS />
+            </AdminGuard>
           </ProtectedRoute>
         } />
 

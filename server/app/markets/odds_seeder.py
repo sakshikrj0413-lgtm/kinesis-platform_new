@@ -50,6 +50,14 @@ def seed_markets(app):
         from app.extensions import db
         from app.models.market import Market
         from app.models.market_outcome import MarketOutcome
+        from app.models.user import User
+
+        # Resolve the system user ID dynamically — never hard-code 1
+        system_user = User.query.filter_by(email="system@kinesis.internal").first()
+        if not system_user:
+            print("[OddsSeeder] System user not found, skipping seed.")
+            return
+        system_user_id = system_user.id
 
         seeded = 0
         for sport in SPORTS:
@@ -68,7 +76,7 @@ def seed_markets(app):
                     description=f"{sport_label} — {event.get('commence_time', '')[:10]}",
                     type="BINARY",
                     status="OPEN",
-                    created_by=1  # system user
+                    created_by=system_user_id  # system user
                 )
                 db.session.add(market)
                 db.session.flush()

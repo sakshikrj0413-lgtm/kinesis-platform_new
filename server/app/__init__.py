@@ -61,6 +61,9 @@ def create_app():
     from app.marketplace import marketplace_bp
     app.register_blueprint(marketplace_bp, url_prefix="/api/marketplace")
 
+    from app.aurora import aurora_bp
+    app.register_blueprint(aurora_bp, url_prefix="/api/aurora")
+
     from app.agents.scheduler import scheduler
     scheduler.start(socketio)
 
@@ -70,6 +73,5 @@ def create_app():
     # Auto-seed real sports markets from The Odds API
     from app.markets.odds_seeder import odds_seeder
     odds_seeder.init_app(app)
-    odds_seeder.start()
 
     return app

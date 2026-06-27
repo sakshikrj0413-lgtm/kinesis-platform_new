@@ -1,8 +1,30 @@
 from app import create_app
-from app.extensions import socketio
+from app.extensions import socketio, db
 from app.markets.live_odds import live_odds_engine
 
 flask_app = create_app()
+
+with flask_app.app_context():
+    db.create_all()
+
+    # ── Seed system admin user (required for FK constraints in odds seeder) ──
+    from app.models.user import User
+    from app.extensions import bcrypt
+    system_user = User.query.filter_by(email="system@kinesis.internal").first()
+    if not system_user:
+        system_user = User(
+            username="KINESIS System",
+            email="system@kinesis.internal",
+            password=bcrypt.generate_password_hash("__system__").decode("utf-8"),
+            role="admin",
+        )
+        db.session.add(system_user)
+        db.session.commit()
+        print("[Seed] Created system admin user (id=%d)" % system_user.id)
+
+# Start odds seeder AFTER system user is guaranteed in DB
+from app.markets.odds_seeder import odds_seeder
+odds_seeder.start()
 
 live_odds_engine.init_app(flask_app)
 
